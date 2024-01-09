@@ -3,18 +3,11 @@ import requests
 import time
 import logging
 import os
-<<<<<<< HEAD
 import random
-=======
->>>>>>> origin/main
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 access_token = None
 token_expiry_time = None
-<<<<<<< HEAD
-=======
-api_rate_limit_delay = 180
->>>>>>> origin/main
 def request_spotify_access_token(client_id,client_secret):
     global access_token, token_expiry_time
     url = 'https://accounts.spotify.com/api/token'
@@ -86,7 +79,6 @@ def get_recommended_tracks(seed_artists, seed_tracks, access_token, limit=5):
     return []
 
 def process_tracks(tracks):
-<<<<<<< HEAD
     batch_to_save = []
     
     for index, track in enumerate(tracks):
@@ -100,24 +92,16 @@ def process_tracks(tracks):
             api_rate_limit_delay = random.randint(180, 700)
             time.sleep(api_rate_limit_delay)
         
-=======
-    for index, track in enumerate(tracks):
-        check_token_refresh()  # Refresh token if necessary
-        if index % 3 == 0 and index > 0:
-            logging.info('Waiting to manage API rate limit...')
-            time.sleep(api_rate_limit_delay)
->>>>>>> origin/main
         track_id = track['track']["id"]
         artist_id = track['track']['artists'][0]["id"]
         recommendations = get_recommended_tracks([artist_id], [track_id], access_token)
         track['recommendations'] = recommendations
-<<<<<<< HEAD
         
-        batch_to_save.extend(track)  # Add the processed track to the batch
+        batch_to_save.append(track)  # Add the processed track to the batch
 
         # Save the batch every 50 tracks
         if (index + 1) % 50 == 0 or (index + 1) == len(tracks):
-            with open('saved_tracks_progress.json', 'a') as file:
+            with open('saved_tracks_progress1.json', 'a') as file:
                 json.dump(batch_to_save, file, indent=4)
             logging.info(f"Progress saved after processing {index + 1} tracks.")
             batch_to_save.clear()  # Clear the batch for the next set of tracks
@@ -127,10 +111,6 @@ def process_tracks(tracks):
 
 
 
-=======
-    return tracks
-
->>>>>>> origin/main
 def main():
     request_spotify_access_token(os.getenv('SPOTIFY_CLIENT_ID'), os.getenv('SPOTIFY_CLIENT_SECRET'))
     with open("saved_tracks.json", 'r') as file:
