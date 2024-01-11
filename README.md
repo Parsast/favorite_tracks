@@ -1,27 +1,28 @@
-# Favorite Tracks Analyzer
+# Dynamic Playlist Generator
 
 ## Overview
-Favorite Tracks Analyzer is a project designed to extract data from your favorite tracks on Spotify and visualize their audio features using Tableau. This tool offers an insightful way to understand the characteristics of the music you love, categorized by the date added to your Spotify account.
+This project offers a unique solution for music lovers and enthusiasts. Leveraging Spotify's API, the Dynamic Playlist Generator creates personalized playlists based on user's favorite tracks. It employs the K-means clustering algorithm to categorize these tracks, then selects a cluster to use as seed songs for generating recommendations with targeted audio features.
+
 
 
 ## Features
 
-Data Extraction: Efficiently pulls data from your Spotify account, specifically focusing on your favorite tracks.
-Audio Feature Analysis: Analyzes various audio features like tempo, energy, danceability, and more.
-Tableau Integration: Leverages the power of Tableau for dynamic and interactive visualization of the extracted data.
-Date-wise Categorization: Organizes tracks based on the date they were added to your account, offering a timeline view of your music preferences.
+User Favorite Tracks Analysis: Analyzes the user’s favorite tracks to understand their music preferences.
+K-means Clustering: Clusters the tracks to identify distinct music styles or moods.
+Spotify API Integration: Utilizes Spotify's API to fetch recommendations based on seed songs from a chosen cluster.
+Targeted Audio Feature Selection: Allows users to specify certain audio features for a more tailored playlist experience.
 
 
-
-## Dashboard Screenshot
-![image](https://github.com/Parsast/favorite_tracks/assets/55469160/20c8a809-0b9c-4eb8-9223-55b1d5ed5100)
 
 
 ## Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+
 Prerequisites
-Spotify Account
-Tableau Desktop or Tableau Public
+Spotify API key
 Python 3.x
+Libraries: spotipy, sklearn, numpy, pandas (Install using pip install spotipy sklearn numpy pandas)
 
 
 ## Contributing
